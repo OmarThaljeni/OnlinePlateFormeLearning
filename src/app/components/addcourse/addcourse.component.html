@@ -1,0 +1,98 @@
+<app-header></app-header>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3  class="register-heading"><i class="fa fa-sticky-note-o"></i> Nouveau cours</h3>
+                    <small class="text-danger"><b>{{msg}}</b></small>
+                    <form #courseform="ngForm" (ngSubmit)="addCourse()">
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nom du cours : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="tapez nom du cours" name="coursename" [(ngModel)]="course.coursename" required 
+                                #coursename="ngModel"
+                                [class.is-invalid]="coursename.invalid && coursename.touched">
+                               <small class="text-danger" [class.d-none]="coursename.valid || coursename.untouched"><b>Champ obligatoire</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Nom de formateur : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="tapez nom du formateur" name="coursename" [(ngModel)]="course.instructorname" required 
+                                #instructorname="ngModel"
+                                [class.is-invalid]="instructorname.invalid && instructorname.touched">
+                               <small class="text-danger" [class.d-none]="instructorname.valid || instructorname.untouched"><b>Champ obligatoire</b></small>
+                            </div>
+                            <div class="form-group" style="display: none;" id="youtubelink">
+                                <label>ID Video cours: <b style="color:red;">*</b></label>
+                                <input type="url" class="form-control" placeholder="please mention youtube video ID" name="youtubeurl" [(ngModel)]="course.youtubeurl" 
+                                #youtubeurl="ngModel">
+                                <small class="text-danger" [class.d-none]="youtubeurl.valid || youtubeurl.untouched"><b>Champ obligatoire</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Course Type : <b style="color:red;">*</b></label>
+                                <select class="form-control" id="sel1" name="coursetype" [(ngModel)]="course.coursetype"
+                                #coursetype="ngModel">
+                                    <option value="Website">Website</option>
+                                    <option value="Youtube">Youtube</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Langue du cours : <b style="color:red;">*</b></label>
+                                <select class="form-control" id="sel1" name="language" [(ngModel)]="course.language"
+                                #language="ngModel">
+                                    <option>Anglais</option>
+                                    <option>Francais</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Date d'inscription : <b style="color:red;">*</b></label>
+                                <input type="date" class="form-control" placeholder="select enrolled date" name="enrolleddate" [(ngModel)]="course.enrolleddate" required
+                                #enrolleddate="ngModel"
+                                [class.is-invalid]="enrolleddate.invalid && enrolleddate.touched">
+                                <small class="text-danger" [class.d-none]="enrolleddate.valid || enrolleddate.untouched"><b>Champ obligatoire</b></small>                          
+                            </div>
+                            <div class="form-group">
+                                <label>Institut de formateur : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="instructor institution " name="instructorinstitution" [(ngModel)]="course.instructorinstitution" required 
+                                #instructorinstitution="ngModel"
+                                [class.is-invalid]="instructorinstitution.invalid && instructorinstitution.touched">
+                               <small class="text-danger" [class.d-none]="instructorinstitution.valid || instructorinstitution.untouched"><b>Champ obligatoire</b></small>
+                            </div>
+                            <div class="form-group" style="display: none;" id="websitelink">
+                                <label>Url Website : <b style="color:red;">*</b></label>
+                                <input type="url" class="form-control" placeholder="please mention website url" name="websiteurl" [(ngModel)]="course.websiteurl"
+                                #websiteurl="ngModel">
+                                <small class="text-danger" [class.d-none]="websiteurl.valid || websiteurl.untouched"><b>Champ obligatoire</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Degré compétenece : <b style="color:red;">*</b></label>
+                                <select class="form-control" id="sel1" name="skilllevel" [(ngModel)]="course.skilllevel"
+                                #skilllevel="ngModel">
+                                    <option>Basique</option>
+                                    <option>Intermediaire</option>
+                                    <option>Avancé</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description du cours : <b style="color:red;">*</b></label>
+                                <textarea type="text" rows = "4" class="form-control" placeholder="Tapez le descrition du cours" name="prescription" [(ngModel)]="course.description" required 
+                                #description="ngModel"
+                                [class.is-invalid]="description.invalid && description.touched"></textarea>
+                               <small class="text-danger" [class.d-none]="description.valid || description.untouched"><b>Champ obligatoire</b></small>
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="courseform.form.invalid" type="submit" class="btnRegister"><i class="fa fa-plus"></i> Ajouter</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>		
+
+<app-footer></app-footer>
